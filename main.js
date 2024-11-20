@@ -3,7 +3,7 @@ import { Car } from "./Car.js";
 import cars from "./mockData.js";
 
 const body = document.body;
-
+//ToDo Mejorar el codigo incluir las promesas en otro js. 
 const iniciarEvento = () => {
   mapToCarClasses(cars)
     .then((carInstances) => {
@@ -15,7 +15,7 @@ const iniciarEvento = () => {
           console.log(carFilters);
 
           createElement(carFilters).then((elementos) => {
-            
+
           });
         })
         .catch((error) => {

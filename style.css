@@ -10,7 +10,7 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
-.filters {
+h1 {
   /*border: 1px solid red;*/
   display: flex;
   align-items: center;

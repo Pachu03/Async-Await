@@ -2,6 +2,8 @@ import "./style.css";
 import { Car } from "./Car.js";
 import cars from "./mockData.js";
 
+const body = document.body;
+
 const iniciarEvento = () => {
   mapToCarClasses(cars)
     .then((carInstances) => {
@@ -11,6 +13,10 @@ const iniciarEvento = () => {
       filterCar(carInstances)
         .then((carFilters) => {
           console.log(carFilters);
+
+          createElement(carFilters).then((elementos) => {
+            
+          });
         })
         .catch((error) => {
           console.log(error);
@@ -43,6 +49,35 @@ const filterCar = (cars) => {
     } else {
       reject("Error al filtrar los datos");
     }
+  });
+};
+
+const createElement = (cars) => {
+  return new Promise((resolve, reject) => {
+    const h1 = document.createElement("h1");
+    h1.textContent = "Coches desde el 2010";
+
+    const divContainer = document.createElement("div");
+    divContainer.className = "container";
+
+    const divBlock = document.createElement("div");
+    divBlock.className = "block";
+
+    cars.forEach((car) => {
+      const div = document.createElement("div");
+
+      const p1 = document.createElement("p");
+      p1.textContent = "Model: " + car.model + " Make: " + car.make;
+
+      const p2 = document.createElement("p");
+      p2.textContent = "Type: " + car.type + " Year: " + car.year;
+
+      div.append(p1, p2);
+      divBlock.append(div);
+    });
+
+    divContainer.append(divBlock);
+    body.append(h1, divContainer);
   });
 };
 
